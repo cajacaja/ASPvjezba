@@ -1,0 +1,56 @@
+﻿@model AjaxTestVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ovo je index.cshtml</h2>
+
+<label>Pozovi AjaxTestAction i rezultat smjesti u testAjaxDiv</label>
+
+<a asp-action="AjaxTestAction" ajax-poziv="da" ajax-rezultat="testAjaxDiv" class="btn btn-primary">Pokreni</a>
+
+<div style="border: solid; border-color:black">
+    <div id="testAjaxDiv">
+        Ovo je testAjaxDiv
+    </div>
+
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ucenik</th>
+            <th>Opci uspjeh</th>
+            <th>Pristupio ispitu</th>
+            <th>Oslobodjen</th>
+            <th>Rezultat</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Ucenici)
+        {
+        <tr>
+            <td>@item.Ucenik</td>
+            <td>@item.OpciUspjeh</td>
+            @if (item.PristupioIspitu)
+    {
+        <td style="color:white"><div style="background-color:forestgreen;width:25px">DA</div></td>}
+else
+{
+        <td style="color:red">NE</td>}
+            @if (item.Oslobodjen)
+    {
+        <td style="color:white"><div style="background-color:forestgreen">DA</div></td>}
+else
+{
+        <td style="color:red">NE</td>}
+            
+            <td id="ID-@item.MaturskiIspitStavkaId">@item.Rezultat</td>
+            <td><a asp-action="Uredi" asp-route-id="@item.MaturskiIspitStavkaId" ajax-poziv="da" ajax-rezultat="ID-@item.MaturskiIspitStavkaId" class="btn btn-info">Uredi</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("Back", "Index", "Home")
+

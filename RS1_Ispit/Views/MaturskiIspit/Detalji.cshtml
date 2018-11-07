@@ -1,0 +1,80 @@
+﻿@model DetaljiVM
+@{
+    ViewData["Title"] = "Detalji";
+}
+
+<h2>Detalji</h2>
+
+<div class="form-group">
+    <label asp-for="Skola"></label>
+    <input asp-for="Skola" value="@Model.Skola" type="text" class="form-control" readonly />
+</div>
+
+<div class="form-group">
+    <label asp-for="Odjeljenje"></label>
+    <input asp-for="Odjeljenje" value="@Model.Odjeljenje" type="text" class="form-control" readonly />
+</div>
+
+<div class="form-group">
+    <label asp-for="Ispitivac"></label>
+    <input asp-for="Ispitivac" value="@Model.Ispitivac" type="text" class="form-control" readonly />
+</div>
+
+
+<div class="form-group">
+    <label asp-for="SkolskaGodina"></label>
+    <input asp-for="SkolskaGodina" value="@Model.SkolskaGodina" type="text" class="form-control" readonly />
+</div>
+
+<div class="form-group">
+    <label asp-for="DatumIspita"></label>
+    <input asp-for="DatumIspita" value="@Model.DatumIspita" type="text" class="form-control" readonly />
+</div>
+
+<div class="form-group">
+    <label asp-for="Predmet"></label>
+    <input asp-for="Predmet" value="@Model.Predmet" type="text" class="form-control" readonly />
+</div>
+
+<div id="nekiID"></div>
+
+
+<script>
+    $(document).ready(function (parametars) { 
+
+        $.get("@Url.Action("Index","AjaxTest",new {id=Model.MaturskiIspitId })", function (rezultat, status) { 
+
+            $("#nekiID").html(rezultat);
+        });
+
+    });
+
+</script>
+
+
+<script>
+    $(document).ready(function (parametars) { 
+
+        $.get("@Url.Action("Index","AjaxTest",new {id=Model.MaturskiIspitId})", function (rezultat, status) {
+
+            $("#nekiID").html(rezultat);
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

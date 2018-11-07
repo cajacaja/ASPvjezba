@@ -1,0 +1,18 @@
+﻿@model UrediVm
+@{
+    ViewData["Title"] = "View";
+}
+
+
+
+<form asp-action="Snimi" method="post" ajax-poziv="da" ajax-rezultat="nekiID">
+
+
+    <input asp-for="MaturskiIpsitStavkaId" value="@Model.MaturskiIpsitStavkaId" style="display:none" class="form-control" />
+
+
+    <input asp-for="Rezultat" type="text" />
+
+
+    <button type="submit" class="btn btn-info">Snimi</button>
+</form>
